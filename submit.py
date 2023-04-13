@@ -24,11 +24,10 @@ def send_email():
         message = request.form['message']
 
         msg = EmailMessage()
-        msg.set_content(message)
         msg['From'] = sender_email
         msg['To'] = recipient_email
         msg['Subject'] = message_subject
-        msg.add_alternative(f"<p>Name: {name}</p><p>Email: {email}</p><p>Phone Number: {phone}</p><p>Message: {message}</p>", subtype='html')
+        msg.set_content(f"<p>Name: {name}</p><p>Email: {email}</p><p>Phone Number: {phone}</p><p>Message: {message}</p>", subtype='html')
 
         with smtplib.SMTP(smtp_server, smtp_port) as server:
             server.starttls()
