@@ -6,7 +6,7 @@ from flask import Flask, request, render_template
 # Set up the SMTP server
 smtp_server = "smtp.gmail.com"
 smtp_port = 587
-
+app = Flask(__name__)
 
 # Set up the email message
 sender_email = "dhcopy1@gmail.com"
@@ -15,8 +15,8 @@ message_subject = "contact"
 message_body = "This is email sent from Daniels Python."
 msg = EmailMessage()
 
-
-def contact():
+@app.route('/send-email', methods=['POST'])
+def send_email():
     msg['From'] = sender_email
     msg['To'] = recipient_email
     msg['Subject'] = message_subject
