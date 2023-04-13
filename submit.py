@@ -12,19 +12,22 @@ app = Flask(__name__)
 sender_email = "dhcopy1@gmail.com"
 recipient_email = "dhcopy1@gmail.com"
 message_subject = "contact"
-message_body = "This is email sent from Daniels Python."
-msg = EmailMessage()
+
 
 @app.route('/send-email', methods=['GET','POST'])
 def send_email():
-    msg['From'] = sender_email
-    msg['To'] = recipient_email
-    msg['Subject'] = message_subject
     name = request.form['name']
     email = request.form['email']
     phone = request.form['number']
     message = request.form['message']
-    msg.set_content(name, email, phone, message, message_body)
+
+    msg = EmailMessage()
+    msg.set_content(message)
+    msg['From'] = sender_email
+    msg['To'] = recipient_email
+    msg['Subject'] = message_subject
+    msg.add_alternative(f"<p>Name: {name}</p><p>Email: {email}</p><p>Phone Number: {phone}</p><p>Message: {message}</p>", subtype='html')
+
     with smtplib.SMTP(smtp_server, smtp_port) as server:
         server.starttls()
         server.login("dhcopy1@gmail.com", os.environ['SMTP_PASSWORD'])
