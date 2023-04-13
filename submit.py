@@ -16,7 +16,7 @@ message_subject = "contact"
 
 @app.route('/send-email', methods=['GET','POST'])
 def send_email():
-    if request.method =='POST':
+    if request.method == 'POST':
             
         name = request.form['name']
         email = request.form['email']
