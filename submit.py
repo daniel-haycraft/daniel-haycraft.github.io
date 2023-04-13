@@ -3,10 +3,6 @@ import os
 from email.message import EmailMessage
 from flask import Flask, request, render_template
 
-app = Flask(__name__)
-
-app.secret_key = 'dev'
-
 # Set up the SMTP server
 smtp_server = "smtp.gmail.com"
 smtp_port = 587
