@@ -15,7 +15,7 @@ message_subject = "contact"
 message_body = "This is email sent from Daniels Python."
 msg = EmailMessage()
 
-@app.route('/send-email', methods=['POST'])
+@app.route('/send-email', methods=['GET','POST'])
 def send_email():
     msg['From'] = sender_email
     msg['To'] = recipient_email
