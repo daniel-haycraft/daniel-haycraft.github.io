@@ -35,7 +35,7 @@ def send_email():
             server.login("dhcopy1@gmail.com", os.environ['SMTP_PASSWORD'])
             server.send_message(msg)
     
-    return 'success!'
+    return render_template('index.html')
     
 if __name__ == '__main__':
     app.run(debug=True)
