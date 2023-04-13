@@ -46,7 +46,6 @@ event.preventDefault(); // prevent the form from submitting normally
 
   const formData = new FormData(form);
   fetch('/send-email', {
-    method: 'POST',
     body: formData
   })
   .then(response => {

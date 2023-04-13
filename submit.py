@@ -2,7 +2,7 @@ import smtplib
 import os
 from email.message import EmailMessage
 
-@app.route('/send-email', methods=['POST'])
+@app.route('/send-email')
 def send_email():
     # Get the form data submitted by the user
     name = request.form['name']
