@@ -1,7 +1,6 @@
 import smtplib
 import os
 from email.message import EmailMessage
-from flask import Flask, request, render_template
 
 # Set up the SMTP server
 smtp_server = "smtp.gmail.com"
@@ -12,18 +11,13 @@ smtp_port = 587
 sender_email = "dhcopy1@gmail.com"
 recipient_email = "dhcopy1@gmail.com"
 message_subject = "contact"
-
-
-name = request.form['name']
-email = request.form['email']
-phone = request.form['number']
-message = request.form['message']
-
+message_body = "This is a test email sent from Python."
 msg = EmailMessage()
 msg['From'] = sender_email
 msg['To'] = recipient_email
 msg['Subject'] = message_subject
-msg.set_content(f"<p>Name: {name}</p><p>Email: {email}</p><p>Phone Number: {phone}</p><p>Message: {message}</p>", subtype='html')
+msg.set_content(message_body)
+
 
 with smtplib.SMTP(smtp_server, smtp_port) as server:
     server.starttls()
