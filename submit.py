@@ -16,26 +16,28 @@ message_subject = "contact"
 
 @app.route('/send-email', methods=['GET','POST'])
 def send_email():
-    name = request.form['name']
-    email = request.form['email']
-    phone = request.form['number']
-    message = request.form['message']
+    if request.method =='POST':
+            
+        name = request.form['name']
+        email = request.form['email']
+        phone = request.form['number']
+        message = request.form['message']
 
-    msg = EmailMessage()
-    msg.set_content(message)
-    msg['From'] = sender_email
-    msg['To'] = recipient_email
-    msg['Subject'] = message_subject
-    msg.add_alternative(f"<p>Name: {name}</p><p>Email: {email}</p><p>Phone Number: {phone}</p><p>Message: {message}</p>", subtype='html')
+        msg = EmailMessage()
+        msg.set_content(message)
+        msg['From'] = sender_email
+        msg['To'] = recipient_email
+        msg['Subject'] = message_subject
+        msg.add_alternative(f"<p>Name: {name}</p><p>Email: {email}</p><p>Phone Number: {phone}</p><p>Message: {message}</p>", subtype='html')
 
-    with smtplib.SMTP(smtp_server, smtp_port) as server:
-        server.starttls()
-        server.login("dhcopy1@gmail.com", os.environ['SMTP_PASSWORD'])
-        server.send_message(msg)
+        with smtplib.SMTP(smtp_server, smtp_port) as server:
+            server.starttls()
+            server.login("dhcopy1@gmail.com", os.environ['SMTP_PASSWORD'])
+            server.send_message(msg)
     
     return 'success!'
     
-
-
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
