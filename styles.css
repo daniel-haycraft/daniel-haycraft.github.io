@@ -94,3 +94,37 @@
     color: #333;
     border: 1px solid #333;
   }
+
+  #hov {
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  #hov:hover {
+    transform: scale(.97);
+  }
+
+.my-class{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* center horizontally */
+    align-items: center; /* center vertically */
+    /* add any other styles as needed */
+  }
+
+
+  .tech-stack {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: xx-small;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    border-radius: 15px;
+    border-style: solid; /* Set border style to solid */
+    border-color: #000000; /* hexadecimal black */
+    color: #000000;
+    margin: 5px;
+    padding: 0 15px;
+  }
+  
+  
